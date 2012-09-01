@@ -17,4 +17,4 @@ rawFile.close()
 startPosition = packageData.find("Package: ")
 endPosition = packageData.find("Source: ")
 
-pring start
+print start
