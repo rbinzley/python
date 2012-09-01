@@ -11,9 +11,11 @@ import time
 
 startTime = time.time()
 
-# read file
-# this file has 36,996 records
-# first full run on commanche took 1647.78 seconds with while statement below
+# Read file
+# This file has 36,996 records
+# First full run on commanche took 1647.78 seconds with while statement below
+# after fixing premature termination problem and used for loop execution on
+# commanche took 554.86 seconds
 #inputFile = "/home/pi/Documents/Packaes-8-25-12" #file on the pi
 inputFile = "/home/rich/Desktop/RaspberryPi/Packages-8-25-12"  #file on commanche
 rawFile = open(inputFile, "r")
