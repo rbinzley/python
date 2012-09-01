@@ -11,7 +11,9 @@ import time
 
 startTime = time.time()
 
-#read file
+# read file
+# this file has 36,996 records
+# first full run on commanche took 1647.78 seconds with while statement below
 #inputFile = "/home/pi/Documents/Packaes-8-25-12" #file on the pi
 inputFile = "/home/rich/Desktop/RaspberryPi/Packages-8-25-12"  #file on commanche
 rawFile = open(inputFile, "r")
@@ -20,6 +22,7 @@ rawFile.close()
 
 size = len(packageData)
 entries = packageData.count("Package: ")
+entriesCheck = packageData.count("Version: ")
 
 readTime = time.time()
 
@@ -28,15 +31,16 @@ print "File read..."
 print
 print "File length is " + str(size) + " characters with " + str(entries) + " package entries "
 print
+print "As a check there are " + str(entriesCheck) + " instances of Version:"
 print "Elapsed time is " + str(readTime - startTime) + " secs"
 print
 
 count = 1
 packageList = []
-#entries = 10  #Get first 10 for testing purposes
+#entries = 10  #Get first 10 for testing purposes when using for loop below
 newStart = 0
-#for i in range(entries): #Condition did not run to end of file
-while "Package: " in packageData[newStart:]: #Runs a lot slower
+for i in range(entriesCheck): #Condition did not run to end of file
+#while "Package: " in packageData[newStart:]: #Runs MUCH slower
     startIndex = packageData.find("Package: ", newStart)
     endIndex = packageData.find("Version: ", newStart)
 
